@@ -236,3 +236,17 @@ body.page-id-719 .et_pb_blog_0 .post-meta .entry-categories a {
 }
 body.page-id-719 .et_pb_blog_0 .post-content, body.page-id-719 .et_pb_blog_0 .post-content p { color: #5e2750 !important; }
 @media (max-width: 767px) { body.page-id-719 .et_pb_blog_0 .et_pb_blog_posts { padding: 6px 20px; } body.page-id-719 .et_pb_blog_0 .entry-title, body.page-id-719 .et_pb_blog_0 .entry-title a { font-size: 21px !important; } }
+
+/* About: Jesse and Gwen, in the same double-ring circle frames as the home cards */
+.ww-founder { display: grid; grid-template-columns: 200px 1fr; gap: 36px; align-items: center; margin: 22px 0 34px; }
+.ww-founder-photo { margin: 0; }
+.ww-founder-photo img {
+  display: block; width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.95), 0 0 0 11px rgba(255, 255, 255, 0.28), 0 16px 34px rgba(94, 39, 80, 0.3);
+}
+.ww-founder-text h3 { margin-top: 0 !important; padding-top: 0 !important; }
+@media (max-width: 767px) {
+  .ww-founder { grid-template-columns: 1fr; justify-items: center; gap: 20px; }
+  .ww-founder-photo img { width: 170px; height: 170px; }
+  .ww-founder-text h3 { text-align: center; }
+}

@@ -137,6 +137,24 @@ function aboutTitleFirst(html) {
   return html.slice(0, colOpenEnd) + title + html.slice(colOpenEnd);
 }
 
+// About page: put Jesse's and Gwen's photos (from the Park West Pharmacy team page) beside their bios.
+function founderPhotos(html) {
+  const people = [
+    ['Dr. Jesse Pruitt, PharmD', 'jesse', 'Dr. Jesse Pruitt, co-founder of Wand &amp; Whisk Café'],
+    ['Dr. Gwendolyn Herzig, PharmD', 'gwen', 'Dr. Gwendolyn Herzig, co-founder of Wand &amp; Whisk Café'],
+  ];
+  for (const [name, img, alt] of people) {
+    const h = `<h3><b>${name}</b></h3>`;
+    const i = html.indexOf(h);
+    if (i < 0) continue;
+    let end = i + h.length;
+    for (let k = 0; k < 2; k++) end = html.indexOf('</p>', end) + 4; // the two paragraphs about this person
+    const src = `${PROD}/ww/img/founders/${img}`;
+    html = html.slice(0, i) + `<div class="ww-founder"><figure class="ww-founder-photo"><img src="${src}-320.webp" srcset="${src}-320.webp 320w, ${src}-640.webp 640w" sizes="200px" width="320" height="320" alt="${alt}" loading="lazy" decoding="async"></figure><div class="ww-founder-text">` + html.slice(i, end) + '</div></div>' + html.slice(end);
+  }
+  return html;
+}
+
 function contactForm(html) {
   const i = html.indexOf('<div id="nf-form-1-cont"');
   if (i < 0) return html;
@@ -156,7 +174,7 @@ function processHtml(html, rel) {
   html = addMenuItems(html);
   if (rel === 'menu/index.html') html = waveTitle(html);
   if (rel === 'contact-us/index.html') html = contactForm(html);
-  if (rel === 'about-us/index.html') html = aboutTitleFirst(html);
+  if (rel === 'about-us/index.html') html = founderPhotos(aboutTitleFirst(html));
   if (PREVIEW) html = html.replace(/<meta name="robots"[^>]*>/i, '<meta name="robots" content="noindex, nofollow">');
   const { out, restore } = protect(html);
   html = restore(rewriteUrls(out, prefix));
@@ -185,6 +203,7 @@ for (const file of walk(MIRROR)) {
 }
 fs.mkdirSync(path.join(OUT, 'ww'), { recursive: true });
 for (const f of ['ww-enhance.css', 'ww-enhance.js']) fs.copyFileSync(path.join(ENH, f), path.join(OUT, 'ww', f));
+fs.cpSync(path.join(ENH, 'img'), path.join(OUT, 'ww/img'), { recursive: true });
 fs.mkdirSync(path.join(OUT, 'ww/fonts'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ENH, 'fonts'))) fs.copyFileSync(path.join(ENH, 'fonts', f), path.join(OUT, 'ww/fonts', f));
 
