@@ -229,22 +229,37 @@ html body .dp_dfg_filtergrid .dp-dfg-item.menu-category-taiyaki-soft-serve img {
   object-fit: cover !important; object-position: 50% 100% !important;
 }
 
-/* Kirby Café "Information" list: the blog index as a white rounded panel of rows */
-body.page-id-719 .et_pb_blog_0 .et_pb_blog_posts {
-  background: rgba(255, 255, 255, 0.94); border-radius: 30px;
-  padding: 18px 42px; box-shadow: 0 10px 34px rgba(94, 39, 80, 0.18);
+/* Blog index as tiles (Marc's first blog layout, restored 2026-10-24): newest post as a wide feature tile,
+   the rest as photo cards; plum border and a hard shadow that jumps up on hover. Markup from build.mjs blogTiles. */
+body.page-id-719 .ww-posts { --ww-plum: #5e2750; --ww-ink: #45193d; --ww-ink-soft: #6b3a62; --ww-line: 2.5px solid var(--ww-plum); }
+body.page-id-719 .ww-post {
+  display: flex; flex-direction: column; background: #fff; color: var(--ww-ink); text-decoration: none;
+  border: var(--ww-line); border-radius: 20px; box-shadow: 5px 5px 0 var(--ww-plum); overflow: hidden;
+  transition: transform .16s ease, box-shadow .16s ease;
 }
-body.page-id-719 .et_pb_blog_0 article.et_pb_post { margin: 0 !important; padding: 26px 0 !important; border-bottom: 1px solid rgba(94, 39, 80, 0.14); border-radius: 0 !important; }
-body.page-id-719 .et_pb_blog_0 article.et_pb_post:last-child { border-bottom: 0; }
-body.page-id-719 .et_pb_blog_0 .entry-title, body.page-id-719 .et_pb_blog_0 .entry-title a { color: #5e2750 !important; font-size: 26px !important; line-height: 1.25 !important; }
-body.page-id-719 .et_pb_blog_0 .entry-title a:hover { color: #a84d9c !important; }
-body.page-id-719 .et_pb_blog_0 .post-meta, body.page-id-719 .et_pb_blog_0 .post-meta a { color: #7a4a6e !important; font-size: 14px !important; }
-body.page-id-719 .et_pb_blog_0 .post-meta .entry-categories a {
-  display: inline-block; padding: 1px 12px; margin-left: 4px; border-radius: 999px;
-  background: #a84d9c; color: #fff !important; font-weight: 700 !important; font-size: 12px !important;
+body.page-id-719 .ww-post:hover { color: var(--ww-ink); transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--ww-plum); }
+body.page-id-719 .ww-post-pic { aspect-ratio: 16 / 10; border-bottom: var(--ww-line); overflow: hidden; background: #fde9ee; }
+body.page-id-719 .ww-post-pic img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 0 !important; }
+body.page-id-719 .ww-post-txt { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+body.page-id-719 .ww-post h2 { margin: 0; padding: 0; font-family: 'Museo Sans Rounded', Nunito, sans-serif !important; font-weight: 800 !important; font-size: 19px !important; line-height: 1.3 !important; color: var(--ww-ink) !important; }
+body.page-id-719 .ww-post-meta { margin: 0; padding: 0; font-size: 14px; font-weight: 700; color: var(--ww-ink-soft); }
+body.page-id-719 .ww-post-ex { margin: 0; padding: 0; font-size: 15.5px; line-height: 1.6; color: var(--ww-ink-soft); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+body.page-id-719 .ww-post-more { margin-top: auto; padding-top: 4px; font-weight: 800; color: #a84d9c; }
+body.page-id-719 .ww-post-more::after { content: " \2192"; }
+body.page-id-719 .ww-post:hover .ww-post-more { text-decoration: underline; }
+body.page-id-719 .ww-post--feature { display: grid; grid-template-columns: 1.15fr 1fr; margin-bottom: 28px; }
+body.page-id-719 .ww-post--feature .ww-post-pic { aspect-ratio: auto; min-height: 320px; border-bottom: 0; border-right: var(--ww-line); }
+body.page-id-719 .ww-post--feature .ww-post-txt { padding: clamp(22px, 3vw, 36px); justify-content: center; }
+body.page-id-719 .ww-post--feature h2 { font-family: 'Magic Story', Georgia, serif !important; font-weight: 400 !important; font-size: clamp(26px, 2.8vw, 36px) !important; line-height: 1.2 !important; }
+body.page-id-719 .ww-post--feature .ww-post-ex { -webkit-line-clamp: 4; }
+body.page-id-719 .ww-post-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+@media (max-width: 900px) {
+  body.page-id-719 .ww-post-grid { grid-template-columns: 1fr 1fr; }
+  body.page-id-719 .ww-post--feature { grid-template-columns: 1fr; }
+  body.page-id-719 .ww-post--feature .ww-post-pic { min-height: 0; aspect-ratio: 16 / 10; border-right: 0; border-bottom: var(--ww-line); }
 }
-body.page-id-719 .et_pb_blog_0 .post-content, body.page-id-719 .et_pb_blog_0 .post-content p { color: #5e2750 !important; }
-@media (max-width: 767px) { body.page-id-719 .et_pb_blog_0 .et_pb_blog_posts { padding: 6px 20px; } body.page-id-719 .et_pb_blog_0 .entry-title, body.page-id-719 .et_pb_blog_0 .entry-title a { font-size: 21px !important; } }
+@media (max-width: 620px) { body.page-id-719 .ww-post-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { body.page-id-719 .ww-post { transition: none; } }
 
 /* About: Jesse and Gwen, in the same double-ring circle frames as the home cards */
 .ww-founder { display: grid; grid-template-columns: 280px 1fr; gap: 44px; align-items: center; margin: 22px 0 34px; }

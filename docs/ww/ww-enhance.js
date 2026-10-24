@@ -51,7 +51,7 @@
   orn.forEach(function (h) { h.classList.add('ww-ornament'); });
 
   /* ---- fade-up as cards come into view; ornament lines draw in ---- */
-  var rise = [].slice.call(document.querySelectorAll('.dp-dfg-item:not(.ww-hidden-item), .et_pb_blurb, .et_pb_toggle, .et_pb_post, article.et_pb_post'));
+  var rise = [].slice.call(document.querySelectorAll('.dp-dfg-item:not(.ww-hidden-item), .et_pb_blurb, .et_pb_toggle, .et_pb_post, article.et_pb_post, .ww-post'));
   var cast = null;
   if ('IntersectionObserver' in window && !reduce) {
     var lineIo = new IntersectionObserver(function (entries) {

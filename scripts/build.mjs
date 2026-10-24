@@ -217,12 +217,46 @@ function framedPhotos(html) {
   });
 }
 
+/* Blog index as tiles: the newest post as a wide feature tile, the rest as photo cards with the plum
+   border and the hard shadow that jumps on hover (Marc's first blog layout, restored 2026-10-24). */
+const POST_IMG = {
+  'little-tokyo-arkansas-comic-con-2026-after-party': ['comic-con-ad-wide.webp', 'Little Tokyo in Little Rock Arkansas Comic Con 2026 after party, open until midnight September 18 and 19'],
+  'a-day-at-little-rocks-little-tokyo': ['all-four-logos.webp', 'Logos of the four Little Tokyo businesses: Wand &amp; Whisk Café, Otaku Takeout, Lucky Cat Arcade, and The Dojo'],
+  'guildmastersguidetotaiyaki': ['creamia-lead.webp', 'Creamia, the Wand &amp; Whisk Café mascot, holding a taiyaki soft serve and a potion float'],
+};
+function blogTiles(html) {
+  const i = html.indexOf('<div class="et_pb_blog_posts');
+  if (i < 0) return html;
+  const end = elementEnd(html, i);
+  const posts = [...html.slice(i, end).matchAll(/<article[\s\S]*?<h2 class="entry-title"><a href="([^"]+)">([^<]+)<\/a><\/h2><p class="post-meta"><span class="published">([^<]+)<\/span>/g)]
+    .map(([, url, title, date]) => {
+      const slug = url.replace(/\/$/, '').split('/').pop();
+      const file = path.join(MIRROR, slug, 'index.html');
+      const page = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
+      const desc = (page.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
+      const c = page.indexOf('class="entry-content"');
+      const body = c > 0 ? page.slice(c, elementEnd(page, page.lastIndexOf('<', c))) : '';
+      const words = body.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+      const [img, alt] = POST_IMG[slug] || [];
+      const pic = img ? `<img src="${PROD}/ww/img/post/${img}" width="1080" height="675" alt="${alt}" loading="lazy" decoding="async">`
+        : ((body.match(/<img\b[^>]*>/) || [''])[0].replace(/\s(?:srcset|sizes|class|style)="[^"]*"/g, ''));
+      return { url, title, date, desc, mins: Math.max(1, Math.round(words / 230)), pic };
+    });
+  if (!posts.length) return html;
+  const meta = (p) => `<p class="ww-post-meta">${p.date} · ${p.mins} min read</p>`;
+  const [first, ...rest] = posts;
+  const feature = `<a class="ww-post ww-post--feature" href="${first.url}"><div class="ww-post-pic">${first.pic.replace(' loading="lazy"', '')}</div><div class="ww-post-txt"><h2>${first.title}</h2><p class="ww-post-ex">${first.desc}</p>${meta(first)}<span class="ww-post-more">Read the post</span></div></a>`;
+  const cards = rest.map((p) => `<a class="ww-post" href="${p.url}"><div class="ww-post-pic">${p.pic}</div><div class="ww-post-txt"><h2>${p.title}</h2>${meta(p)}<p class="ww-post-ex">${p.desc}</p><span class="ww-post-more">Read the post</span></div></a>`).join('');
+  return html.slice(0, i) + `<div class="ww-posts">${feature}<div class="ww-post-grid">${cards}</div></div>` + html.slice(end);
+}
+
 function processHtml(html, rel) {
   const prefix = prefixFor(rel);
   html = removeWpOnly(html);
   html = addMenuItems(html);
   html = framedPhotos(html);
   if (rel === 'menu/index.html') html = waveTitle(html);
+  if (rel === 'blog/index.html') html = blogTiles(html);
   if (rel === 'contact-us/index.html') html = contactForm(html);
   if (rel === 'about-us/index.html') html = aboutRows(founderPhotos(aboutHero(html)));
   if (PREVIEW) html = html.replace(/<meta name="robots"[^>]*>/i, '<meta name="robots" content="noindex, nofollow">');
