@@ -160,6 +160,36 @@ function founderPhotos(html) {
   return html;
 }
 
+// About page: break the long text into alternating rows of text and art (the girls in arched
+// windows, trios of arched menu photos), switching sides each section.
+function aboutRows(html) {
+  const img = (n, w, h, alt, cls = '') => `<img class="${cls}" src="${PROD}/ww/img/${n}" width="${w}" height="${h}" alt="${alt}" loading="lazy" decoding="async">`;
+  const star = (c) => `<img class="ww-star ${c}" src="${PROD}/wp-content/uploads/2026/06/WWStarWhite.svg" alt="" width="27" height="27">`;
+  const windowArt = (name, srcset, w, h, extra = '') => `<div class="ww-window ww-window--${name}" aria-hidden="true">${star('s1')}${star('s2')}${star('s3')}<img class="ww-window-girl" src="${PROD}/ww/img/${srcset[0]}" srcset="${srcset.map((f, i) => `${PROD}/ww/img/${f} ${[1, 2][i] === 1 ? w : w * 2}w`).join(', ')}" sizes="(max-width: 767px) 280px, 380px" width="${w}" height="${h}" alt="" loading="lazy" decoding="async">${extra}</div>`;
+  const trio = (items) => `<div class="ww-trio">${items.map(([f, alt], i) => `<div class="ww-trio-arch a${i + 1}"><img src="${PROD}/ww/img/about/${f}-280.webp" srcset="${PROD}/ww/img/about/${f}-280.webp 280w, ${PROD}/ww/img/about/${f}-560.webp 560w" sizes="(max-width: 767px) 30vw, 150px" width="280" height="${f.startsWith('float') ? 420 : 374}" alt="${alt}" loading="lazy" decoding="async"></div>`).join('')}</div>`;
+  const art = {
+    'A Little Magic for Little Rock': ['right', windowArt('creamia', ['about/creamia-600.webp', 'about/creamia-1200.webp'], 600, 383)],
+    'Luxury Soft Serve': ['left', trio([['taiyaki-strawberry', 'Strawberry taiyaki soft serve'], ['taiyaki-matcha', 'Matcha taiyaki soft serve'], ['taiyaki-ube', 'Ube taiyaki soft serve']])],
+    'Welcome to the Dessert Guild': ['right', windowArt('ube', ['guild/ube-400.webp', 'guild/ube-800.webp'], 400, 320)],
+    'Meet the Guild': ['left', trio([['float-stamina', 'Stamina Potion Float'], ['float-mana', 'Mana Potion Float'], ['float-health', 'Health Potion Float']])],
+    'Our Promise': ['right', windowArt('matcha', ['guild/matcha-400.webp', 'guild/matcha-800.webp'], 400, 320)],
+  };
+  const starts = [...html.matchAll(/<h2><b>/g)].map((m) => m.index);
+  if (!starts.length) return html;
+  const last = starts[starts.length - 1];
+  const textEnd = html.indexOf('</div></div>', last);
+  const bounds = starts.map((st, i) => [st, i + 1 < starts.length ? starts[i + 1] : textEnd]);
+  let out = html.slice(0, starts[0]);
+  for (const [st, en] of bounds) {
+    const block = html.slice(st, en);
+    const key = Object.keys(art).find((k) => block.slice(0, 200).includes(k));
+    if (!key) { out += block; continue; }
+    const [side, figure] = art[key];
+    out += `<div class="ww-about-row ww-art-${side}"><div class="ww-about-text">${block}</div><figure class="ww-about-art">${figure}</figure></div>`;
+  }
+  return out + html.slice(textEnd);
+}
+
 function contactForm(html) {
   const i = html.indexOf('<div id="nf-form-1-cont"');
   if (i < 0) return html;
@@ -179,7 +209,7 @@ function processHtml(html, rel) {
   html = addMenuItems(html);
   if (rel === 'menu/index.html') html = waveTitle(html);
   if (rel === 'contact-us/index.html') html = contactForm(html);
-  if (rel === 'about-us/index.html') html = founderPhotos(aboutHero(html));
+  if (rel === 'about-us/index.html') html = aboutRows(founderPhotos(aboutHero(html)));
   if (PREVIEW) html = html.replace(/<meta name="robots"[^>]*>/i, '<meta name="robots" content="noindex, nofollow">');
   const { out, restore } = protect(html);
   html = restore(rewriteUrls(out, prefix));
