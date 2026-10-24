@@ -27,9 +27,25 @@
     if (btn && !grid.querySelector('.ww-hidden-item')) { var w = btn.closest('.dp-dfg-pagination'); if (w) w.style.display = 'none'; }
   });
 
-  /* ---- fade-up as cards come into view, and the footer cast pop-up ---- */
+  /* ---- Eorzea Café style ornament line under centered section titles ---- */
+  var orn = [].slice.call(document.querySelectorAll('h2.et_pb_module_header, h1.entry-title, h1.et_pb_module_header')).filter(function (h) {
+    if (h.closest('.et_pb_blurb, .anchor-group, .dp-dfg-item, .ww-wave-title')) return false;
+    if (document.body.classList.contains('home') && h.tagName === 'H1') return false;
+    return getComputedStyle(h).textAlign === 'center';
+  });
+  orn.forEach(function (h) { h.classList.add('ww-ornament'); });
+
+  /* ---- fade-up as cards come into view; ornament lines draw in ---- */
   var rise = [].slice.call(document.querySelectorAll('.dp-dfg-item:not(.ww-hidden-item), .et_pb_blurb, .et_pb_toggle, .et_pb_post, article.et_pb_post'));
-  var cast = document.querySelector('.ww-cast');
+  var cast = null;
+  if ('IntersectionObserver' in window && !reduce) {
+    var lineIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('ww-drawn'); lineIo.unobserve(en.target); } });
+    }, { threshold: 0.6 });
+    orn.forEach(function (h) { lineIo.observe(h); });
+  } else {
+    orn.forEach(function (h) { h.classList.add('ww-drawn'); });
+  }
   if ('IntersectionObserver' in window && !reduce) {
     rise.forEach(function (el) {
       var r = el.getBoundingClientRect();

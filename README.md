@@ -9,9 +9,14 @@ A static copy of [wandandwhiskcafe.com](https://wandandwhiskcafe.com), the WordP
 | Addition | From | Where |
 |---|---|---|
 | Wavy "Menu" title that moves as you scroll | Little Goat Chicago menu page | /menu/ |
-| The four girls peeking over the footer, popping up as you reach it, hopping on hover | Kirby Café | Every page |
+| Menu tracker's active category becomes a white bubble with two trailing dots, sliding as you scroll | Kirby Café | Home and menu |
+| Arched tops on menu cards and menu-item photos | Kirby Café shop cards | Home, menu, item pages |
+| Double-ring circle frames around the three character cards | Pokémon Café menu | Home |
+| Thin ornament line (diamond ends, the café's star) that draws in under centered titles | FF Eorzea Café dividers, Pokémon Café line animation | Every page |
+| Blog index as a white rounded "news" panel with category tags | Kirby Café Information list | /blog/ |
 | Cards fade up as they come into view | Pokémon Café | Menu cards, home cards, FAQ, blog |
 | Menu cards and character cards bounce on hover | Kirby Café | Home and menu |
+| Real rounded font with real weights (Nunito in place of the hairline-only Museo Sans Rounded), Magic Story on every page title, pill buttons, white FAQ bubbles, rounded hero bottom and footer top, softer footer plum | Marc's requests | Every page |
 | Sign-up box slides in after scrolling, with no dark overlay over the page | Marc's request to James (Google's interstitial rules) | Every page |
 
 Already on James's site and kept as is: the floating Strawberry and twinkling stars in the hero, the header that turns magenta on scroll, and the side nav that tracks the menu category in view.

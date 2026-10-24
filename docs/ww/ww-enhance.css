@@ -55,31 +55,14 @@
   .ww-wave .row2 { display: none; }
 }
 
-/* ---------- Kirby Café style cast peeking over the footer ---------- */
-.ww-last-section { padding-bottom: calc(4% + 110px) !important; }
-.ww-last-plain { padding-bottom: 110px !important; }
-.et_pb_section_0_tb_footer { position: relative; overflow: visible !important; }
-.ww-cast {
-  position: absolute; left: 0; right: 0; bottom: 100%;
-  display: flex; justify-content: center; align-items: flex-end; gap: clamp(6px, 4vw, 56px);
-  pointer-events: none; z-index: 2;
-  clip-path: inset(-400px -400px 0 -400px);
-}
-.ww-cast img { height: clamp(66px, 9vw, 128px); width: auto; transform: translateY(30%); pointer-events: auto; transition: transform .35s cubic-bezier(.34, 1.56, .64, 1); }
-.ww-js .ww-cast img { transform: translateY(100%); }
-.ww-js .ww-cast.ww-in img { transform: translateY(30%); }
-.ww-js .ww-cast.ww-in img:nth-child(2) { transition-delay: .08s; }
-.ww-js .ww-cast.ww-in img:nth-child(3) { transition-delay: .16s; }
-.ww-js .ww-cast.ww-in img:nth-child(4) { transition-delay: .24s; }
-.ww-cast.ww-in img:hover { transform: translateY(8%); transition-delay: 0s !important; }
-@media (max-width: 767px) {
-  .ww-last-section { padding-bottom: calc(50px + 64px) !important; }
-  .ww-last-plain { padding-bottom: 64px !important; }
-}
+/* room for the footer's rounded top */
+.ww-last-section { padding-bottom: calc(4% + 48px) !important; }
+.ww-last-plain { padding-bottom: 48px !important; }
+@media (max-width: 767px) { .ww-last-section { padding-bottom: calc(50px + 48px) !important; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .ww-js .ww-rise, .ww-js .ww-cast img, .dp-dfg-item, .et_pb_blurb .et_pb_main_blurb_image img { transition: none !important; opacity: 1 !important; }
-  .ww-js .ww-cast img { transform: translateY(30%) !important; }
+  .ww-js .ww-rise, .dp-dfg-item, .et_pb_blurb .et_pb_main_blurb_image img { transition: none !important; opacity: 1 !important; }
+  .ww-ornament::after { transform: none !important; }
 }
 
 /* =====================================================================
@@ -162,3 +145,94 @@ body.single-post #left-area { float: none !important; width: 100% !important; ma
 body iframe[src*="google.com/maps"] { border-radius: 22px; }
 body.single-post #main-content .container { padding-top: 48px !important; }
 body .et_pb_blurb_description, body .et_pb_blurb_description * { font-weight: 500 !important; }
+
+/* =====================================================================
+   Details borrowed from the sites in Jesse's brief
+   ===================================================================== */
+
+/* FF Eorzea Café: a thin ornament line (diamond ends, the café's star in the
+   middle) under centered titles; it draws outward like Pokémon Café's lines */
+.ww-ornament::after {
+  content: "";
+  display: block;
+  width: 230px; max-width: 70%; height: 16px;
+  margin: 14px auto 0;
+  background-color: currentColor;
+  opacity: .85;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 230 16'%3E%3Cpath d='M5 3l5 5-5 5-5-5z'/%3E%3Crect x='14' y='7.3' width='86' height='1.4' rx='.7'/%3E%3Cpath d='M115 0q1.7 6.3 8 8-6.3 1.7-8 8-1.7-6.3-8-8 6.3-1.7 8-8z'/%3E%3Crect x='130' y='7.3' width='86' height='1.4' rx='.7'/%3E%3Cpath d='M225 3l5 5-5 5-5-5z'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 230 16'%3E%3Cpath d='M5 3l5 5-5 5-5-5z'/%3E%3Crect x='14' y='7.3' width='86' height='1.4' rx='.7'/%3E%3Cpath d='M115 0q1.7 6.3 8 8-6.3 1.7-8 8-1.7-6.3-8-8 6.3-1.7 8-8z'/%3E%3Crect x='130' y='7.3' width='86' height='1.4' rx='.7'/%3E%3Cpath d='M225 3l5 5-5 5-5-5z'/%3E%3C/svg%3E") center / contain no-repeat;
+  transform: scaleX(0);
+  transition: transform 1s cubic-bezier(.2, .8, .2, 1);
+}
+.ww-ornament.ww-drawn::after { transform: scaleX(1); }
+
+/* Kirby Café: the menu tracker's active item becomes a white bubble with
+   two trailing dots, sliding to whichever category is on screen */
+@media (min-width: 768px) {
+  body .side-anchor-nav { padding-left: 14px !important; }
+  body .side-anchor-nav::after {
+    left: 14px !important; width: calc(100% - 14px) !important;
+    border-radius: 999px; background: #fff !important;
+    box-shadow: 0 4px 16px rgba(94, 39, 80, 0.18);
+    transition: top .45s cubic-bezier(.34, 1.4, .64, 1), height .3s ease !important;
+    z-index: 0;
+  }
+  body .side-anchor { position: relative; z-index: 1; padding: 10px 18px !important; }
+  body .side-anchor.active { color: #a84d9c !important; font-size: 19px !important; transform: none !important; }
+  body .side-anchor.active::after {
+    content: ""; position: absolute; right: -26px; top: 50%;
+    width: 6px; height: 6px; border-radius: 50%; background: #fff;
+    box-shadow: 11px 0 0 #fff; transform: translateY(-50%);
+  }
+  body .side-anchor-nav::before { left: 4px !important; width: 2px; background: rgba(255, 255, 255, 0.35) !important; }
+}
+@media (max-width: 767px) {
+  body .side-anchor-nav { padding: 6px !important; }
+  body .side-anchor-nav a { flex: 0 0 50% !important; }
+  body .side-anchor.active { background: #fff; color: #a84d9c !important; text-decoration: none !important; border-radius: 999px; }
+}
+
+/* Pokémon Café: the three character cards sit in double-ring circle frames */
+body.home .et_pb_section_1 .et_pb_blurb .et_pb_main_blurb_image { margin-bottom: 26px !important; }
+body.home .et_pb_section_1 .et_pb_blurb .et_pb_main_blurb_image .et_pb_image_wrap {
+  display: inline-flex !important; align-items: center; justify-content: center;
+  width: 180px; height: 180px;
+  border-radius: 50% !important; overflow: visible;
+  background: radial-gradient(circle at 50% 42%, #fff 0%, #fde8ed 72%);
+  box-shadow: 0 0 0 5px #f6b8c6, 0 0 0 11px #fff, 0 0 0 12px rgba(168, 77, 156, 0.45);
+}
+body.home .et_pb_section_1 .et_pb_blurb .et_pb_main_blurb_image img { width: 150px !important; max-width: 150px !important; height: auto !important; border-radius: 0 !important; }
+body.home .et_pb_section_1 .et_pb_blurb { padding-top: 16px; }
+
+/* Kirby Café arch: single menu-item photos in the same arched frame as the menu cards */
+body.single-menu-item .et_pb_image_0_tb_body { text-align: center; }
+body.single-menu-item .et_pb_image_0_tb_body .et_pb_image_wrap {
+  display: inline-block !important; width: min(380px, 78vw); aspect-ratio: 3 / 4;
+  border-radius: 999px 999px 36px 36px !important; overflow: hidden;
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.9), 0 0 0 16px rgba(255, 255, 255, 0.3), 0 18px 40px rgba(94, 39, 80, 0.25);
+}
+body.single-menu-item .et_pb_image_0_tb_body .et_pb_image_wrap img { width: 100% !important; height: 100% !important; object-fit: cover; object-position: 50% 50%; border-radius: 0 !important; }
+body.single-menu-item .et_pb_post_content_0_tb_body { text-align: center; margin-top: 30px; }
+
+/* Kirby Café shop cards: menu cards get arched tops */
+html body .dp_dfg_filtergrid .dp-dfg-container .dp-dfg-items .dp-dfg-item {
+  border-top-left-radius: 90px !important; border-top-right-radius: 90px !important;
+  border-bottom-left-radius: 24px !important; border-bottom-right-radius: 24px !important;
+}
+
+/* Kirby Café "Information" list: the blog index as a white rounded panel of rows */
+body.page-id-719 .et_pb_blog_0 .et_pb_blog_posts {
+  background: rgba(255, 255, 255, 0.94); border-radius: 30px;
+  padding: 18px 42px; box-shadow: 0 10px 34px rgba(94, 39, 80, 0.18);
+}
+body.page-id-719 .et_pb_blog_0 article.et_pb_post { margin: 0 !important; padding: 26px 0 !important; border-bottom: 1px solid rgba(94, 39, 80, 0.14); border-radius: 0 !important; }
+body.page-id-719 .et_pb_blog_0 article.et_pb_post:last-child { border-bottom: 0; }
+body.page-id-719 .et_pb_blog_0 .entry-title, body.page-id-719 .et_pb_blog_0 .entry-title a { color: #5e2750 !important; font-size: 26px !important; line-height: 1.25 !important; }
+body.page-id-719 .et_pb_blog_0 .entry-title a:hover { color: #a84d9c !important; }
+body.page-id-719 .et_pb_blog_0 .post-meta, body.page-id-719 .et_pb_blog_0 .post-meta a { color: #7a4a6e !important; font-size: 14px !important; }
+body.page-id-719 .et_pb_blog_0 .post-meta .entry-categories a {
+  display: inline-block; padding: 1px 12px; margin-left: 4px; border-radius: 999px;
+  background: #a84d9c; color: #fff !important; font-weight: 700 !important; font-size: 12px !important;
+}
+body.page-id-719 .et_pb_blog_0 .post-content, body.page-id-719 .et_pb_blog_0 .post-content p { color: #5e2750 !important; }
+@media (max-width: 767px) { body.page-id-719 .et_pb_blog_0 .et_pb_blog_posts { padding: 6px 20px; } body.page-id-719 .et_pb_blog_0 .entry-title, body.page-id-719 .et_pb_blog_0 .entry-title a { font-size: 21px !important; } }

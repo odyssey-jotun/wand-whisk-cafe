@@ -114,15 +114,10 @@ function waveTitle(html) {
   });
 }
 
-// Kirby Café style cast peeking over the footer, with room made above it.
-function addCast(html, prefix) {
-  const castImgs = [['strawberry', 367], ['matcha', 320], ['ube', 320], ['creamia', 250]]
-    .map(([n, h]) => `<img src="${prefix}ww/cast/${n}-400.webp" srcset="${prefix}ww/cast/${n}-400.webp 400w, ${prefix}ww/cast/${n}-800.webp 800w" sizes="200px" width="400" height="${h}" alt="" loading="lazy" decoding="async">`).join('');
+// Mark the last content section so the footer's rounded top can overlap its padding.
+function markLastSection(html) {
   const fIdx = html.indexOf('<div class="et_pb_section_0_tb_footer');
   if (fIdx < 0) return html;
-  const tagEnd = html.indexOf('>', fIdx) + 1;
-  html = html.slice(0, tagEnd) + `<div class="ww-cast" aria-hidden="true">${castImgs}</div>` + html.slice(tagEnd);
-  // mark the last content section before the footer so it gets room for the cast
   const main = html.indexOf('id="main-content"');
   const footerStart = html.lastIndexOf('<footer', fIdx);
   const lastSec = html.lastIndexOf('<div class="et_pb_section_', footerStart);
@@ -165,7 +160,7 @@ function processHtml(html, rel) {
   if (PREVIEW) html = html.replace(/<meta name="robots"[^>]*>/i, '<meta name="robots" content="noindex, nofollow">');
   const { out, restore } = protect(html);
   html = restore(rewriteUrls(out, prefix));
-  html = addCast(html, prefix);
+  html = markLastSection(html);
   const cfg = JSON.stringify({ contactEndpoint: CONTACT_ENDPOINT });
   html = html.replace('</head>', `<link rel="stylesheet" href="${prefix}ww/ww-enhance.css?v=${ver('ww-enhance.css')}">\n</head>`);
   html = html.replace(/<\/body>(?![\s\S]*<\/body>)/, `<script>window.WW=${cfg};</script>\n<script src="${prefix}ww/ww-enhance.js?v=${ver('ww-enhance.js')}" defer></script>\n</body>`);
@@ -188,9 +183,8 @@ for (const file of walk(MIRROR)) {
     fs.copyFileSync(file, dest);
   }
 }
-fs.mkdirSync(path.join(OUT, 'ww/cast'), { recursive: true });
+fs.mkdirSync(path.join(OUT, 'ww'), { recursive: true });
 for (const f of ['ww-enhance.css', 'ww-enhance.js']) fs.copyFileSync(path.join(ENH, f), path.join(OUT, 'ww', f));
-for (const f of fs.readdirSync(path.join(ENH, 'cast'))) fs.copyFileSync(path.join(ENH, 'cast', f), path.join(OUT, 'ww/cast', f));
 fs.mkdirSync(path.join(OUT, 'ww/fonts'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ENH, 'fonts'))) fs.copyFileSync(path.join(ENH, 'fonts', f), path.join(OUT, 'ww/fonts', f));
 
