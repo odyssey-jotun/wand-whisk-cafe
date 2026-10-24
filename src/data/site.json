@@ -1,0 +1,211 @@
+{
+  "name": "Wand & Whisk Café",
+  "productionUrl": "https://wandandwhiskcafe.com",
+  "season": {
+    "name": "autumn",
+    "heroCharacter": "ube",
+    "note": "Swap heroCharacter each season: strawberry (spring), matcha (summer), ube (autumn), creamia (winter)."
+  },
+  "address": {
+    "street": "11201 Bass Pro Pkwy Suite M147",
+    "city": "Little Rock",
+    "region": "AR",
+    "zip": "72210",
+    "lat": 34.66242,
+    "lng": -92.41149
+  },
+  "phone": "(501) 563-0769",
+  "phoneHref": "+15015630769",
+  "email": "wandandwhiskcafe@gmail.com",
+  "hoursShort": "M-Sat 11-8 and Sun 11-7",
+  "hours": [
+    { "days": "Monday–Saturday", "time": "11:00 a.m.–8:00 p.m.", "schema": "Mo-Sa 11:00-20:00" },
+    { "days": "Sunday", "time": "11:00 a.m.–7:00 p.m.", "schema": "Su 11:00-19:00" }
+  ],
+  "footerBlurb": "A locally owned Japanese-inspired dessert and luxury ice cream café in Little Rock, Arkansas. A sweet escape from the ordinary.",
+  "mailchimp": {
+    "action": "https://wandandwhiskcafe.us19.list-manage.com/subscribe/post?u=5e775d46f772e8208d5cce973&id=69ff587609&f_id=001736e7f0",
+    "jsonp": "https://wandandwhiskcafe.us19.list-manage.com/subscribe/post-json?u=5e775d46f772e8208d5cce973&id=69ff587609&f_id=001736e7f0",
+    "honeypot": "b_5e775d46f772e8208d5cce973_69ff587609"
+  },
+  "contactFormEndpoint": "",
+  "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.6943409076525!2d-92.41148992402562!3d34.66242147293327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d2a89debc54d6b%3A0xd09f5ab4fc5376d2!2s11201%20Bass%20Pro%20Pkwy%2C%20Little%20Rock%2C%20AR%2072210!5e0!3m2!1sen!2sus!4v1783109700192!5m2!1sen!2sus",
+
+  "home": {
+    "title": "Wand & Whisk Café | Japanese Dessert Café in Little Rock, AR",
+    "description": "Arkansas's only Japanese Dessert Cafe. Come enjoy luxury taiyaki topped with soft-serve ice cream and the most delicious crepes in Little Rock.",
+    "h1": "Welcome to the Wand & Whisk Café",
+    "tagline": "A Magical Dessert Atelier in Little Rock.",
+    "lede": "Wand & Whisk Café is a place where guests can pause, treat themselves, and step into something a little more magical. From our pastel café interior to our handcrafted desserts and whimsical drinks, every detail is designed to make the everyday feel special.",
+    "heroAlt": "Two friends laughing as one holds an ice cream cone over the other's head in front of a pink and yellow striped wall",
+    "escapism": {
+      "h2": "A Café Made for a Little Escapism",
+      "paras": [
+        "Step into a sweet escape from the ordinary. Wand & Whisk Café is a locally owned dessert atelier serving handcrafted Japanese-inspired crepes, taiyaki soft serve, fluffy soufflé pancakes, and colorful potion sodas in a whimsical café setting.",
+        "Whether you’re stopping in for a signature dessert, a playful drink, or a little everyday magic, Wand & Whisk is designed to feel like a magical bubble away from the outside world."
+      ],
+      "cards": [
+        { "character": "matcha", "title": "Luxury Soft Serve", "text": "Our soft serve is crafted in-house under the direction of our Head Chef and Guild Master from a recipe inspired by Japan’s luxury soft serve tradition." },
+        { "character": "strawberry", "title": "Custom Potion Floats", "text": "Whimsical potion floats crafted under chef direction. Handcrafted Japanese-inspired desserts & treats you won’t find everywhere" },
+        { "character": "ube", "title": "Our Promise", "text": "We promise playful details, magical touches, and memorable moments. A truly whimsical space designed for a sweet escape" }
+      ]
+    },
+    "events": {
+      "h2": "Events, Specials & Guild Creations",
+      "paras": [
+        "The Dessert Guild is always experimenting.",
+        "Join us for seasonal menu drops, limited-time flavors, themed treats, tastings, collaborations, and special café experiences.",
+        "Check back often to see what new creations have appeared in the atelier."
+      ]
+    },
+    "guild": {
+      "h2": "Join the Guild",
+      "text": "Become an honorary member of the Wand & Whisk Dessert Guild and be the first to hear about new flavors, limited-time items, seasonal specials, and upcoming café events."
+    }
+  },
+
+  "faq": [
+    { "q": "What is Wand & Whisk Café?", "a": ["Wand & Whisk Café is a Japanese-inspired dessert and luxury ice cream café in Little Rock, Arkansas, built for fans of anime, tabletop games, trading cards, fantasy, and video games. It serves taiyaki, rolled Japanese crepes, soufflé pancakes, and potion sodas."] },
+    { "q": "Where is Wand & Whisk Café located?", "a": ["We’re located in the Outlets of Little Rock in Little Rock, Arkansas. You’ll find us across from Otaku Takeout and the Lucky Cat Arcade. We’re also right next to The Dojo, a TTRPG gaming and trading card store. If you’re trying to get directions for your GPS, though, here’s our address:", "11201 Bass Pro Pkwy Suite M147<br>Little Rock, AR 72210"] },
+    { "q": "What are the hours of the Wand and Whisk Café?", "a": ["Our normal business operation hours are as follows:", "Monday–Saturday: 11:00 a.m.–8:00 p.m.", "Sunday: 11:00 a.m.–7:00 p.m."] },
+    { "q": "What makes your ice cream different from regular soft serve?", "a": ["Our soft serve is real milk cream at 12.5% milk fat, which meets the USDA standard for actual ice cream and runs about double what you’ll find elsewhere in Arkansas. It’s crafted in-house under our Head Chef and benchmarked against Japan’s luxury soft serve tradition."] },
+    { "q": "What is taiyaki?", "a": ["A warm, fish-shaped pastry cone, filled with custard or Nutella and topped with our in-house soft serve."] },
+    { "q": "What’s on the menu?", "a": ["Japanese-inspired crepes, taiyaki soft serve, soufflé pancakes, and potion sodas, plus seasonal creations from the Dessert Guild."] },
+    { "q": "Do you host birthday parties or group events?", "a": ["Yes. The café is designed for celebrating the things you love, so birthdays and group meetups are a natural fit. Watch the Events section for tastings, themed experiences, and seasonal drops."] },
+    { "q": "Are you kid-friendly / family-friendly?", "a": ["Yes. The menu and space are approachable for anyone, with magical details layered in for guests who want to discover more."] }
+  ],
+
+  "events": [
+    {
+      "slug": "test-event",
+      "name": "Feast & Film",
+      "start": "2026-07-12T13:00:00-05:00",
+      "dateLabel": "July 12, 2026 1:00 pm",
+      "location": "Wand and Whisk",
+      "image": "event/feast-and-film",
+      "imageAlt": "Summer Matsuri Festival Feast & Film poster featuring Howl's Moving Castle",
+      "description": "Feast and Film takes place as part of the Summer Matsuri Festival. There will be screening of Howl’s Moving Castle and Wand & Whisk Café is providing Calcifer’s Breakfast from the film right on cue to the scene in the movie.",
+      "learnMore": "https://www.facebook.com/events/s/summer-matsuri-festival-feast-/1571901381245433/"
+    }
+  ],
+
+  "bookings": {
+    "title": "Events & Private Bookings Guide",
+    "subtitle": "Gatherings • Birthday Celebrations • Large Group Reservations • Private Buyouts",
+    "advance": "All event packages, table reservations, and café buyouts require booking confirmation a minimum of <strong>1 week in advance</strong>.",
+    "packages": [
+      {
+        "name": "Small Group Gathering", "kind": "Casual & Birthday",
+        "space": "10–15 Guests", "spaceNote": "Up to 4 booth sections",
+        "price": "$8 Flat Event Pricing", "priceNote": "on Taiyaki • Floats • Classic Crêpes",
+        "deposit": "$0 Deposit", "depositNote": "", "staffing": "Standard Floor Service",
+        "detailsTitle": "1. Small Gatherings", "detailsSub": "10–15 Guests • Up to 4 Booths",
+        "details": [
+          ["$8 Exclusive Pricing:", "Taiyaki, Floats, and Classic Crêpes discounted to flat $8 each."],
+          ["Full Menu Access:", "All other specialty menu items available at regular counter prices."],
+          ["No Deposit Required:", "Pay at the register or open a collective event tab."],
+          ["Seating:", "Reserved 90-minute seating block dedicated to your party."]
+        ]
+      },
+      {
+        "name": "Large Group Reservation", "kind": "Dedicated Section Claim",
+        "space": "5+ Tables Claimed", "spaceNote": "During open café hours",
+        "price": "$10 / Person", "priceNote": "Minimum food & beverage tab spend",
+        "deposit": "$100 Deposit", "depositNote": "Credited to bill", "staffing": "Dedicated Guild Member",
+        "detailsTitle": "2. Large Groups", "detailsSub": "5+ Tables • Normal Hours",
+        "details": [
+          ["$10 / Guest Tab Minimum:", "100% applied toward food and drink orders."],
+          ["Dedicated Guild Member:", "Dedicated team member focused exclusively on your group's hospitality."],
+          ["$100 Deposit:", "Required at booking; credited directly to your final tab."],
+          ["Pre-Ordering:", "Advance menu submission recommended for prompt service."]
+        ]
+      },
+      {
+        "name": "Private Café Buyout", "kind": "Exclusive After-Hours Space",
+        "space": "Entire Café Space", "spaceNote": "Closed to the general public",
+        "price": "$50 / Hour", "priceNote": "rental fee + $10 / Person tab minimum",
+        "deposit": "$100 Deposit", "depositNote": "Credited to bill", "staffing": "Dedicated Guild Member",
+        "detailsTitle": "3. Private Buyouts", "detailsSub": "Entire Café • Closed Space",
+        "details": [
+          ["Exclusive Access:", "Full private use of dining space, seating, and café atmosphere."],
+          ["Rates:", "$50/hour space rental + $10/person food & beverage tab minimum."],
+          ["Dedicated Guild Member:", "Private service, drink crafting, and kitchen delivery."],
+          ["Pre-Orders:", "Pre-ordered menu selections required 72 hours in advance."]
+        ]
+      }
+    ],
+    "policies": [
+      ["Lead Time & Scheduling", "All reservations must be scheduled with our team at least <strong>1 week (7 days)</strong> in advance to ensure staffing and inventory readiness."],
+      ["Deposit & Credit Application", "The $100 deposit for Large Groups and Private Buyouts secures your date/time, and is applied directly toward your event's final food and drink tab."],
+      ["Menu Pre-Orders", "Pre-ordering items is required for private buyouts (72 hours notice) and highly encouraged for large tables to maintain kitchen pacing and fresh service."],
+      ["Gratuity & Service Standards", "An automatic 18% service gratuity is applied to group tabs of 10 or more guests to support our dedicated Guild team members."]
+    ],
+    "largeGroups": "For parties over 30, please call our store or email us at <a href=\"mailto:wandandwhiskcafe@gmail.com\">wandandwhiskcafe@gmail.com</a> to hear adjusted rates and custom arrangements for parties that large.",
+    "closing": "Ready to book your gathering? Speak with our café management team or submit an inquiry to reserve your date!"
+  },
+
+  "about": {
+    "title": "About Us | Wand & Whisk Café, Little Rock",
+    "description": "Wand & Whisk Café is a locally owned dessert café in Little Rock, Arkansas, created for people who believe dessert should feel like an experience.",
+    "intro": {
+      "h2": "Wand & Whisk Café: A Little Magic for Little Rock",
+      "paras": [
+        "Wand & Whisk Café is a locally owned dessert café in Little Rock, Arkansas, created for people who believe dessert should feel like an experience.",
+        "Inspired by Japanese desserts and the warmth and wonder of a magical guild, Wand & Whisk offers a little escape from the ordinary. Come celebrate a birthday, meet friends who share your interests, enjoy dessert with your family, or simply settle into a welcoming space designed to feel playful, comforting, and a little otherworldly.",
+        "Our world draws inspiration from magical girls anime, tabletop games, trading card games, fantasy novels, and video games, but all you need is an appetite and a willingness to believe an ordinary day can still hold a little magic to join the guild!"
+      ]
+    },
+    "softServe": {
+      "h2": "Luxury Soft Serve Ice Cream in Little Rock, Arkansas",
+      "paras": [
+        "At the heart of Wand & Whisk is our signature luxury soft serve.",
+        "Our recipe is made with real dairy and formulated at 12.5% milkfat, giving it an exceptionally rich, smooth, and creamy texture. It was developed and refined in-house, with Japan’s celebrated luxury soft-serve tradition serving as our benchmark.",
+        "As pharmacists by training, founders Jesse Pruitt and Gwendolyn Herzig understand that formulation is not a matter of guesswork. Ratios matter. Ingredients matter. Small adjustments can completely change the finished result. Our Guild Master brings that same precision and consistency to every batch we serve.",
+        "You will find our signature soft serve in taiyaki cones, dessert cups, potion floats, and seasonal guild creations. Our menu also includes Japanese-style rolled crepes, freshly made taiyaki, colorful potion sodas, and other desserts designed to taste every bit as special as they look."
+      ],
+      "closer": "Taste it once, and you will understand why we call it luxury soft serve."
+    },
+    "guild": {
+      "h2": "Welcome to the Dessert Guild",
+      "paras": [
+        "Wand & Whisk is more than a place to get ice cream in Little Rock. It is a world of its own: warm, pastel, whimsical.",
+        "Our team members are part of the guild, our desserts have stories, and the café is filled with details meant to be discovered. It is a magical bubble where children can feel like adventurers, adults can reconnect with the things they love, and everyone is invited to stay awhile.",
+        "Whether you are planning a birthday celebration, meeting friends after a tabletop game, introducing your family to taiyaki, or treating yourself after a long day, we want your visit to feel memorable from the moment you walk through the door."
+      ]
+    },
+    "founders": {
+      "h2": "Meet the Founders",
+      "people": [
+        { "name": "Dr. Jesse Pruitt, PharmD", "paras": [
+          "Jesse leads much of the creative vision behind Wand & Whisk, from its characters and storytelling to the desserts and experiences that bring its magical world to life. Outside of work, he loves to cook, collect toys and trading cards, and play video games.",
+          "Jesse studied chemistry at Arkansas State University before earning his Doctor of Pharmacy from the University of Arkansas for Medical Sciences. He and his wife, Erica, have four children: Parker, Leo, Griffin, and Freya."
+        ] },
+        { "name": "Dr. Gwendolyn Herzig, PharmD", "paras": [
+          "Gwen brings the enthusiasm and determination that help turn ambitious ideas into places people can actually experience and enjoy. A lifelong Arkansan, she studied biology at Arkansas State University, graduated with University Honors, and earned her Doctor of Pharmacy from UAMS.",
+          "She and her wife, Beth, are the mothers of two daughters, Autumn and Evelyn."
+        ] }
+      ],
+      "after": "Jesse and Gwen first built their working partnership at Park West Pharmacy, where caring for people and creating a genuinely welcoming environment have always gone hand in hand. Together, they later created a family of locally owned Little Rock destinations celebrating imagination, play, and Japanese pop culture: Otaku Takeout, Lucky Cat Arcade, The Dojo, and Wand & Whisk Café."
+    },
+    "team": {
+      "h2": "Meet the Guild",
+      "people": [
+        { "name": "Dylan Hobby, Guild Master", "paras": [
+          "Howdy! I’m Dylan Hobby, the Guild Master here at Wand & Whisk Cafe and a Pulaski Tech Culinary Arts graduate. Growing up watching shows like <em>Diners, Drive-Ins and Dives</em> and my love for theme parks both helped spark my lifelong passion for food and immersive worldbuilding. This of course led me here to help bring an immersive cafe experience to my home state of Arkansas alongside the Oni Co LLC family. When I’m not at the cafe, you can find me exploring my favorite fictional universes like <em>Pokémon</em> and <em>Elden Ring</em>, playing TCGs with my fiancé Redd, hiking the best trails the Natural State has to offer, or taking care of our pets in our home town of North Little Rock. I also LOVE music and am almost always listening to great tracks. Some of my favorite artists include Tame Impala, Daft Punk, and Glass Animals. I also have an excessive collection of flat-billed hats and food-themed Magic Cards. With a last name like mine, it is inevitable to have a lot of Hobbies."
+        ] },
+        { "name": "Megan Covey, Assistant Mage", "paras": [
+          "Hi everyone! I'm Megan, the Assistant Mage at Wand & Whisk Café! I graduated from Colorado Technical University with an Associate's Degree in Business Administration and Management. I'm passionate about baking, a huge anime and manga fan, and enjoy spending time with my two dogs. I'm dedicated to creating a magical, welcoming experience and making every guest's visit a little sweeter."
+        ] }
+      ],
+      "membersTitle": "Our Guild Members",
+      "members": "Every member of the Wand & Whisk guild helps bring our world to life. From preparing desserts and welcoming new adventurers to keeping the café clean, colorful, and full of energy, our team is what turns the story of Wand & Whisk into a real experience."
+    },
+    "promise": {
+      "h2": "Our Promise",
+      "paras": [
+        "We created Wand & Whisk to give Little Rock something we wanted for our own families: a welcoming place filled with imagination, thoughtfully crafted desserts, and experiences worth remembering.",
+        "Come as you are. Bring your party. There is always room for one more adventurer at the guild."
+      ]
+    }
+  }
+}
