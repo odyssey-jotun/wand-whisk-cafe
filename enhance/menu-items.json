@@ -1,0 +1,148 @@
+{
+ "taiyaki-soft-serve": [
+  {
+   "slug": "creme-royale",
+   "name": "Creme Royale Taiyaki",
+   "description": "Our Soft Serve Sweet Cream Vanilla Ice Cream in a Warm Fish-Shaped Waffle Cone.",
+   "img": "/wp-content/uploads/2026/06/Creme-Royale-e1784666536761.png"
+  },
+  {
+   "slug": "strawberry-taiyaki",
+   "name": "Strawberry Taiyaki",
+   "description": "Our Soft Serve Strawberry Ice Cream in a Warm Fish-Shaped Waffle Cone.",
+   "img": "/wp-content/uploads/2026/07/Strawberry-e1784665124404.jpg"
+  },
+  {
+   "slug": "matcha-taiyaki",
+   "name": "Matcha Taiyaki",
+   "description": "Our Soft Serve Matcha Ice Cream in a Warm Fish-Shaped Waffle Cone.",
+   "img": "/wp-content/uploads/2026/08/Matcha-Taiyaki-Website-Image-2.jpg"
+  },
+  {
+   "slug": "ube-taiyaki",
+   "name": "Ube Taiyaki",
+   "description": "Our Soft Serve Ube Ice Cream in a Warm Fish-Shaped Waffle Cone.",
+   "img": "/wp-content/uploads/2026/07/Ube-e1784666631444.jpg"
+  },
+  {
+   "slug": "strawberry-milk-taiyaki",
+   "name": "Strawberry Milk Taiyaki",
+   "description": "Swirl of our Soft Serve Cream Royale and Strawberry Ice Cream in a Warm Fish-Shaped Waffle Cone",
+   "img": "/wp-content/uploads/2026/08/Strawberry-Milk-Website-Image.jpg"
+  },
+  {
+   "slug": "matcha-ube-taiyaki",
+   "name": "Matcha Ube Taiyaki",
+   "description": "Swirl of our Soft Serve Matcha and Ube Ice Cream in a Warm Fish-Shaped Waffle Cone",
+   "img": "/wp-content/uploads/2026/06/Matchube-e1785087711581.png"
+  }
+ ],
+ "classic-crepes": [
+  {
+   "slug": "banana-pudding-crepe",
+   "name": "Banana Pudding Crepe",
+   "description": "Vanilla Whipped Cream, Nilla Wafers, Vanilla Pudding, and Sliced Bananas",
+   "img": "/wp-content/uploads/2026/08/Banana-Pudding-Crepe-Website.jpg"
+  },
+  {
+   "slug": "japan-classic",
+   "name": "Classic Japanese Crepe",
+   "description": "Vanilla Whipped Cream, Nutella, Frosted Flakes, Fresh Strawberries, and Sliced Bananas",
+   "img": "/wp-content/uploads/2026/06/Classic-Japanese-e1784666714454.png"
+  },
+  {
+   "slug": "strawberry-cream",
+   "name": "Strawberry & Cream Crepe",
+   "description": "Vanilla Whipped Cream, Strawberry Sauce, Frosted Flakes, and Fresh Strawberries",
+   "img": "/wp-content/uploads/2026/07/Strawberries-and-Cream-e1784664928864.jpg"
+  },
+  {
+   "slug": "banana-nutella-crepe",
+   "name": "Banana & Nutella Crepe",
+   "description": "Vanilla Whipped Cream, Nutella, Frosted Flakes, and Sliced Bananas",
+   "img": "/wp-content/uploads/2026/06/Banana-Nutella-e1784666806374.png"
+  }
+ ],
+ "specialty-crepes": [
+  {
+   "slug": "salted-caramel-cheesecake-brulee-crepe",
+   "name": "Salted Caramel Cheesecake Brulee Crepe",
+   "description": "Vanilla Whipped Cream, Caramel Sauce, Pretzel Pieces, Cheesecake Bites, Sliced Cheesecake, and Brûléed Pudding.",
+   "img": "/wp-content/uploads/2026/08/Brulee-Crepe-Image-Website.jpg"
+  },
+  {
+   "slug": "chocolate-dream-crepe",
+   "name": "Choco Wand Crepe",
+   "description": "Chocolate Whipped Cream, Chocolate Sauce, Brownie Chunks, Cocoa Pebbles, Oreo Dust, and Milk Chocolate Decor Pieces",
+   "img": "/wp-content/uploads/2026/07/choc-crepe.jpg"
+  },
+  {
+   "slug": "ube-wand-crepe",
+   "name": "Peanut Butter Dream Crepe",
+   "description": "Chocolate Whipped Cream, Reese’s Peanut Butter Sauce, Chocolate Sauce, Reese’s Pieces, and Chocolate Pocky",
+   "img": "/wp-content/uploads/2026/07/PBD-Crepe.jpg"
+  },
+  {
+   "slug": "strawberry-wand-crepe",
+   "name": "Strawberry Wand Crepe",
+   "description": "Strawberry Whipped Cream Cheese, Vanilla Whipped Cream, Strawberry Sauce, Frosted Flakes, and Sliced Strawberries",
+   "img": "/wp-content/uploads/2026/07/Strawberry-Wand-e1784665078738.jpg"
+  }
+ ],
+ "potion-floats": [
+  {
+   "slug": "stamina-float",
+   "name": "Stamina Potion Float",
+   "description": "A vibrant fusion of fizzy club soda and sweet Melona syrup, crowned with our signature Cream Royale ice cream.",
+   "img": "/wp-content/uploads/2026/07/Gemini_Generated_Image_2bif852bif852bif.jpg"
+  },
+  {
+   "slug": "mana-float",
+   "name": "Mana Potion Float",
+   "description": "A vibrant fusion of fizzy club soda and sweet Blue Hawaiian syrup, crowned with our signature Cream Royale ice cream.",
+   "img": "/wp-content/uploads/2026/07/Gemini_Generated_Image_vgwiinvgwiinvgwi.jpg"
+  },
+  {
+   "slug": "health-float",
+   "name": "Health Potion Float",
+   "description": "A vibrant fusion of fizzy club soda and sweet Strawberry syrup, crowned with our signature Cream Royale ice cream.",
+   "img": "/wp-content/uploads/2026/08/Gemini_Generated_Image_o4uthio4uthio4ut.jpg"
+  }
+ ],
+ "potion-sodas": [
+  {
+   "slug": "original-potion-soda",
+   "name": "Stamina Potion Soda",
+   "description": "A vibrant fusion of fizzy club soda and sweet Melona syrup.",
+   "img": "/wp-content/uploads/2026/08/Fixedd.jpg"
+  },
+  {
+   "slug": "mana-potion-soda",
+   "name": "Mana Potion Soda",
+   "description": "A vibrant fusion of fizzy club soda and sweet Blue Hawaiian syrup.",
+   "img": "/wp-content/uploads/2026/08/Fixed-2.jpg"
+  },
+  {
+   "slug": "health-potion-soda",
+   "name": "Health Potion Soda",
+   "description": "A vibrant fusion of fizzy club soda and sweet Strawberry syrup.",
+   "img": "/wp-content/uploads/2026/08/Fixedd-3.jpg"
+  }
+ ],
+ "souffle-pancakes": [
+  {
+   "slug": "royal-souffle-stack",
+   "name": "Royal Souffle Stack",
+   "description": "Made to order fluffy souffle pancakes, whipped cream, butter, and honey.",
+   "img": "/wp-content/uploads/2026/07/Royal-Souffle-Stack-e1784664723417.jpg"
+  }
+ ],
+ "other-beverages": [
+  {
+   "slug": "magical-matcha-latte",
+   "name": "Magical Matcha Latte",
+   "description": "Ceremonial-grade organic matcha served over ice with rich, velvety half-and-half. Topped with a silky, handcrafted cold foam.",
+   "img": "/wp-content/uploads/2026/08/Magic-Matcha-Test.jpg"
+  }
+ ]
+}

@@ -1,0 +1,345 @@
+/*
+Theme Name:  Wand and Whisk
+Theme URL:   ../../../
+Description: Write here theme description.
+Author:      2gUdWrKA9w
+Author URL:  ../../../
+Template:    Divi
+Version:     1.0.0
+*/
+
+
+h1,.et_pb_title_container h1 {font-size:60px !important;font-weight:500 !important;}
+
+
+p {font-weight:500 !important}
+
+body #page-container .et_pb_section .et_pb_button.centered-button {
+    padding-inline: 2em !important;
+}
+
+body #page-container .et_pb_section .et_pb_button.centered-button::before,
+body #page-container .et_pb_section .et_pb_button.centered-button::after {
+    display: none !important;
+    content: none !important;
+}
+
+.nf-form-content input[type="submit"] {
+	text-align:center !important;
+	padding:10px 20px !important;
+	background-color: #af56a0 !important;
+  border-color: #af56a0 !important;
+  border-radius: 15px !important;color:#fff  !important;font-weight:bold;
+	}
+
+.et_pb_menu .et_pb_menu__menu > nav > ul {
+  flex-wrap: nowrap;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+
+.dp-dfg-filter {margin-bottom:3px}
+
+.menu .dp-dfg-layout-grid .dp-dfg-items {
+grid-template-columns: repeat(auto-fit, minmax(20%, 1fr)) !important;
+}
+
+@keyframes randomTwinkle {
+  /* Pulse 1: Fast (0s to 1.5s) */
+  0%   { transform: scale(1); opacity: 0; }
+  7%   { transform: scale(1.2); opacity: 1; }
+  15%  { transform: scale(1); opacity: 0; }
+
+  /* Pause/Rest period */
+  25%  { transform: scale(1); opacity: 0; }
+
+  /* Pulse 2: Very Slow (3.5s to 6.5s) */
+  35%  { transform: scale(1); opacity: 0; }
+  50%  { transform: scale(1.3); opacity: 1; }
+  65%  { transform: scale(1); opacity: 0; }
+
+  /* Pulse 3: Sharp & Quick (7.5s to 8.5s) */
+  75%  { transform: scale(1); opacity: 0; }
+  80%  { transform: scale(1.1); opacity: 1; }
+  85%  { transform: scale(1); opacity: 0; }
+
+  /* End of chain */
+  100% { transform: scale(1); opacity: 0; }
+}
+
+
+
+
+/* Fixes the capsule container when the page is scrolled down */
+#divi-sticky-header.scrolled {
+  padding-top: 10px !important;
+}
+
+#divi-sticky-header.scrolled .et_pb_row {
+  background: rgba(255, 255, 255, 0.95) !important; /* Swaps the pink gradient to a solid frosted cream on scroll */
+  backdrop-filter: blur(10px);
+  transform: scale(0.96); /* Elegant, subtle shrink */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+html, body {
+    background-color: #5e2750; 
+}
+
+.et_pb_text_0 .et_pb_text_inner {
+  font-family: Helvetica,Arial,Lucida,sans-serif !important;
+  font-size: inherit !important;
+}
+
+.anchor-group img {padding-bottom:20px}
+
+
+
+
+	
+.menu-scroll-section,
+.menu-scroll-row,
+.menu-sidebar-column,
+.menu-sidebar-column > .et_pb_code {
+    overflow: visible !important;
+}
+
+.menu-scroll-row {
+    align-items: stretch !important;
+}
+
+.menu-sidebar-column {
+    align-self: stretch !important;
+    height: auto !important;
+}
+	
+/* Sidebar wrapper sticks for the height of its parent column */
+/* The Code module is the sticky element */
+.menu-sidebar-column > .et_pb_code {
+    position: sticky !important;
+    top: 140px;
+    align-self: flex-start;
+    z-index: 10;
+}
+
+/* The inner wrapper is now ordinary content */
+.side-anchor-wrap {
+    position: relative;
+}
+
+/* The navigation no longer needs to be sticky */
+.side-anchor-nav {
+    --bar-top: 0px;
+    --bar-height: 0px;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-left: 18px;
+}
+
+/* Stationary sidebar line */
+.side-anchor-nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Moving active marker */
+.side-anchor-nav::after {
+    content: "";
+    position: absolute;
+    top: var(--bar-top);
+    left: 0;
+    width: 3px;
+    height: var(--bar-height);
+    background: #fff;
+    transition:
+        top 0.3s ease,
+        height 0.3s ease;
+}
+
+/* Sidebar labels */
+.side-anchor {
+    display: block;
+    padding: 10px 0;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.75;
+    text-decoration: none;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+	color:#fff;
+	font-weight:bold;
+}
+
+.nf-form-fields-required,.nf-form-content label {color:#fff !important;font-family:museo sans rounded !important;}
+
+/* Current section */
+.side-anchor.active {
+    opacity: 1;
+    transform: translateX(4px);
+	font-size: 24px;
+  font-weight: bold;
+}
+
+/* Divi FilterGrid targets */
+.anchor-group {
+    scroll-margin-top: 140px;
+}
+
+.mailchimp-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.mailchimp-modal.is-open {
+    display: flex;
+}
+
+.mailchimp-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.mailchimp-modal__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 520px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.mailchimp-modal__close {
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: 36px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.mailchimp-modal__form {
+    margin-top: 24px;
+}
+
+.mailchimp-field label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.mailchimp-field input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.mailchimp-modal__submit {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+body.mailchimp-modal-open {
+    overflow: hidden;
+}
+
+@media (max-width: 600px) {
+    .mailchimp-modal__dialog {
+        padding: 35px 24px 28px;
+    }
+}
+
+
+@media (max-width: 980px) {
+    #main-header.et-fixed-header {
+        position: fixed !important;
+        top: 0;
+        width: 100%;
+        z-index: 99999;
+    }
+}
+
+
+@media screen and (max-width:767px) {
+	
+	h1 {font-size:40px !important;}
+	
+	.anchor-group img {
+  	max-height: unset !important;
+	}
+	.menu-sidebar-column {
+        display: contents !important;
+    }
+
+    .menu-sidebar-column > .et_pb_code {
+        position: sticky !important;
+        top: 85px;
+        z-index: 20;
+        width: 100%;
+        background: inherit;
+    }
+
+	.side-anchor-nav {
+    flex-direction: row !important;
+    background:#AA519E;
+    border-radius:15px;
+    padding-left:0;
+   flex-wrap: wrap;
+	}
+	.side-anchor-nav a { font-size:14px !important;text-align:center;line-height:1.2; padding: 5px !important;flex: 0 0 50%;}
+	
+	.side-anchor.active {
+    text-decoration: underline;
+	}
+	
+	.side-anchor-nav::after,.side-anchor-nav::before {display:none;}
+
+	.sparkle.one {left:5% !important;}
+	.sparkle.two {left:0 !important;}
+	.sparkle.three {left:12% !important;}
+	
+	.dp-dfg-layout-grid .dp-dfg-items {
+grid-template-columns: unset !important;
+}
+
+}
+

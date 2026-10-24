@@ -1,0 +1,83 @@
+/* Wand & Whisk additions layered on top of the live site's own styles.
+   Everything James built stays as is; this file only adds Jesse's
+   reference-site animations and replaces pieces that needed WordPress. */
+
+/* Search needs WordPress, so the icon is hidden on the static copy */
+#et_top_search, .et_search_outer, .et_pb_menu__search-button { display: none !important; }
+
+/* ---------- sign-up box: James's box, without the full-screen dark overlay ---------- */
+.wppopups-whole { display: block !important; }
+.wppopups-whole .spu-bg { display: none !important; }
+.wppopups-whole .spu-box {
+  display: block !important;
+  position: fixed !important;
+  right: 18px; bottom: 18px; left: auto; top: auto;
+  width: min(450px, calc(100vw - 36px)) !important;
+  margin: 0 !important;
+  padding: 20px !important;
+  background: rgb(252, 230, 235) !important;
+  border-radius: 15px;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+  z-index: 99998;
+  opacity: 0; visibility: hidden;
+  transform: translateY(24px);
+  transition: opacity .35s ease, transform .35s ease, visibility 0s linear .35s;
+}
+.wppopups-whole .spu-box.ww-open { opacity: 1; visibility: visible; transform: none; transition: opacity .35s ease, transform .35s ease; }
+.wppopups-whole .spu-close { position: absolute; top: 4px; right: 12px; font-size: 30px; line-height: 1; color: #666; cursor: pointer; }
+.wppopups-whole .spu-close:hover { color: #000; }
+@media (max-width: 600px) {
+  .wppopups-whole .spu-box { right: 10px; bottom: 10px; width: calc(100vw - 20px) !important; padding: 14px 16px !important; }
+  .wppopups-whole #mc_embed_signup_scroll h2 { font-size: 24px; padding-bottom: 4px; }
+  .wppopups-whole .indicates-required { display: none; }
+}
+
+/* ---------- Load More (static) ---------- */
+.ww-hidden-item { display: none !important; }
+
+/* ---------- Pokémon Café style fade-up as cards enter ---------- */
+.ww-js .ww-rise { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
+.ww-js .ww-rise.ww-in { opacity: 1; transform: none; }
+
+/* ---------- Kirby Café style bounce on hover ---------- */
+.dp-dfg-item { transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), box-shadow .25s ease !important; }
+.dp-dfg-item:hover { transform: translateY(-8px); box-shadow: rgba(0, 0, 0, 0.3) 0 10px 26px 0 !important; }
+.et_pb_blurb .et_pb_main_blurb_image img { transition: transform .3s cubic-bezier(.34, 1.56, .64, 1); }
+.et_pb_blurb:hover .et_pb_main_blurb_image img { transform: translateY(-10px) rotate(-3deg); }
+
+/* ---------- Little Goat style wavy "Menu" title ---------- */
+.ww-wave-title { margin: 0 !important; padding: 0 !important; line-height: 0 !important; }
+.ww-wave { display: block; width: 100vw; max-width: none; margin: 24px 0 0 calc(50% - 50vw); height: auto; overflow: visible; }
+.ww-wave text { font-family: 'Magic Story', Helvetica, Arial, sans-serif; font-size: 96px; fill: #fff; }
+.ww-wave .row2 text { fill: rgba(255, 255, 255, 0.55); }
+@media (max-width: 767px) {
+  .ww-wave text { font-size: 150px; }
+  .ww-wave .row2 { display: none; }
+}
+
+/* ---------- Kirby Café style cast peeking over the footer ---------- */
+.ww-last-section { padding-bottom: calc(4% + 110px) !important; }
+.ww-last-plain { padding-bottom: 110px !important; }
+.et_pb_section_0_tb_footer { position: relative; overflow: visible !important; }
+.ww-cast {
+  position: absolute; left: 0; right: 0; bottom: 100%;
+  display: flex; justify-content: center; align-items: flex-end; gap: clamp(6px, 4vw, 56px);
+  pointer-events: none; z-index: 2;
+  clip-path: inset(-400px -400px 0 -400px);
+}
+.ww-cast img { height: clamp(66px, 9vw, 128px); width: auto; transform: translateY(30%); pointer-events: auto; transition: transform .35s cubic-bezier(.34, 1.56, .64, 1); }
+.ww-js .ww-cast img { transform: translateY(100%); }
+.ww-js .ww-cast.ww-in img { transform: translateY(30%); }
+.ww-js .ww-cast.ww-in img:nth-child(2) { transition-delay: .08s; }
+.ww-js .ww-cast.ww-in img:nth-child(3) { transition-delay: .16s; }
+.ww-js .ww-cast.ww-in img:nth-child(4) { transition-delay: .24s; }
+.ww-cast.ww-in img:hover { transform: translateY(8%); transition-delay: 0s !important; }
+@media (max-width: 767px) {
+  .ww-last-section { padding-bottom: calc(50px + 64px) !important; }
+  .ww-last-plain { padding-bottom: 64px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ww-js .ww-rise, .ww-js .ww-cast img, .dp-dfg-item, .et_pb_blurb .et_pb_main_blurb_image img { transition: none !important; opacity: 1 !important; }
+  .ww-js .ww-cast img { transform: translateY(30%) !important; }
+}
