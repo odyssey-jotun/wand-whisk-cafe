@@ -47,8 +47,10 @@ function protect(html) {
   return { out, restore: (s) => s.replace(/\u0000KEEP(\d+)\u0000/g, (_, i) => kept[+i]) };
 }
 
+const stripOldFont = (t) => t.replace(/@font-face\s*\{[^}]*font-family:\s*["']?Museo Sans Rounded["']?[^}]*\}/g, '');
+
 function removeWpOnly(html) {
-  return html
+  return stripOldFont(html)
     .replace(/<link[^>]+rel=["'](?:https:\/\/api\.w\.org\/|EditURI|shortlink|pingback)["'][^>]*>\s*/gi, '')
     .replace(/<link[^>]+type=["'](?:application\/json\+oembed|text\/xml\+oembed|application\/rss\+xml)["'][^>]*>\s*/gi, '')
     .replace(/<script[^>]+id=["']wppopups-js(?:-extra)?["'][^>]*>[\s\S]*?<\/script>\s*/gi, '');
@@ -128,6 +130,18 @@ function addCast(html, prefix) {
   return html.replace('id="main-content"', 'id="main-content" class="ww-last-plain"');
 }
 
+function aboutTitleFirst(html) {
+  const t = html.indexOf('<div class="et_pb_post_title_0');
+  if (t < 0) return html;
+  const tEnd = elementEnd(html, t);
+  const title = html.slice(t, tEnd);
+  const col = html.lastIndexOf('<div class="et_pb_column_', t);
+  const colOpenEnd = html.indexOf('>', col) + 1;
+  if (col < 0 || colOpenEnd > t) return html;
+  html = html.slice(0, t) + html.slice(tEnd);
+  return html.slice(0, colOpenEnd) + title + html.slice(colOpenEnd);
+}
+
 function contactForm(html) {
   const i = html.indexOf('<div id="nf-form-1-cont"');
   if (i < 0) return html;
@@ -147,6 +161,7 @@ function processHtml(html, rel) {
   html = addMenuItems(html);
   if (rel === 'menu/index.html') html = waveTitle(html);
   if (rel === 'contact-us/index.html') html = contactForm(html);
+  if (rel === 'about-us/index.html') html = aboutTitleFirst(html);
   if (PREVIEW) html = html.replace(/<meta name="robots"[^>]*>/i, '<meta name="robots" content="noindex, nofollow">');
   const { out, restore } = protect(html);
   html = restore(rewriteUrls(out, prefix));
@@ -168,7 +183,7 @@ for (const file of walk(MIRROR)) {
     fs.writeFileSync(dest, processHtml(fs.readFileSync(file, 'utf8'), rel));
     pages.push(rel);
   } else if (/\.css$/i.test(rel)) {
-    fs.writeFileSync(dest, rewriteUrls(fs.readFileSync(file, 'utf8'), prefixFor(rel)));
+    fs.writeFileSync(dest, stripOldFont(rewriteUrls(fs.readFileSync(file, 'utf8'), prefixFor(rel))));
   } else {
     fs.copyFileSync(file, dest);
   }
@@ -176,6 +191,8 @@ for (const file of walk(MIRROR)) {
 fs.mkdirSync(path.join(OUT, 'ww/cast'), { recursive: true });
 for (const f of ['ww-enhance.css', 'ww-enhance.js']) fs.copyFileSync(path.join(ENH, f), path.join(OUT, 'ww', f));
 for (const f of fs.readdirSync(path.join(ENH, 'cast'))) fs.copyFileSync(path.join(ENH, 'cast', f), path.join(OUT, 'ww/cast', f));
+fs.mkdirSync(path.join(OUT, 'ww/fonts'), { recursive: true });
+for (const f of fs.readdirSync(path.join(ENH, 'fonts'))) fs.copyFileSync(path.join(ENH, 'fonts', f), path.join(OUT, 'ww/fonts', f));
 
 const urls = pages.filter((p) => !p.startsWith('coming-soon')).map((p) => `${PROD}/${p.replace(/index\.html$/, '')}`);
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
