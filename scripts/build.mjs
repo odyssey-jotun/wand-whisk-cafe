@@ -203,10 +203,25 @@ function contactForm(html) {
     .replace(/<script[^>]+id=["']nf-[^"']*["'][^>]*>[\s\S]*?<\/script>\s*/g, '');
 }
 
+/* Crepe photos reframed so the gap above the crepe (or its paper cone point) to the card's arch matches the
+   gap beside it, the same rule Jesse set for the taiyaki cards. Built from James's uploads into
+   enhance/img/crepes/<name>-framed.jpg; the backdrop filled in around them is the photo's own. */
+const FRAMED = ['Banana-Pudding-Crepe-Website.jpg', 'Classic-Japanese-e1784666714454.png', 'Strawberries-and-Cream-e1784664928864.jpg',
+  'Banana-Nutella-e1784666806374.png', 'Brulee-Crepe-Image-Website.jpg', 'choc-crepe.jpg', 'PBD-Crepe.jpg', 'Strawberry-Wand-e1784665078738.jpg'];
+function framedPhotos(html) {
+  return html.replace(/<img\b[^>]*>/g, (tag) => {
+    const m = tag.match(/\ssrc="[^"]*\/wp-content\/uploads\/\d{4}\/\d{2}\/([^"\/]+)"/);
+    if (!m || !FRAMED.includes(m[1])) return tag;
+    const framed = `${PROD}/ww/img/crepes/${m[1].replace(/\.(jpg|png)$/i, '')}-framed.jpg`;
+    return tag.replace(m[0], ` src="${framed}"`).replace(/\s(?:srcset|sizes)="[^"]*"/g, '');
+  });
+}
+
 function processHtml(html, rel) {
   const prefix = prefixFor(rel);
   html = removeWpOnly(html);
   html = addMenuItems(html);
+  html = framedPhotos(html);
   if (rel === 'menu/index.html') html = waveTitle(html);
   if (rel === 'contact-us/index.html') html = contactForm(html);
   if (rel === 'about-us/index.html') html = aboutRows(founderPhotos(aboutHero(html)));
