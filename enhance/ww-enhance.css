@@ -223,8 +223,9 @@ html body .dp_dfg_filtergrid .dp-dfg-container .dp-dfg-items .dp-dfg-item {
    Room above the tip now matches the gap beside the cone (Jesse, 2026-10-24); ww-enhance.js fills it
    with each photo's own backdrop color so the extra strip reads as part of the photo. */
 html body .dp_dfg_filtergrid .dp-dfg-item.menu-category-taiyaki-soft-serve img {
-  box-sizing: border-box !important; padding-top: 11px !important;
-  background: linear-gradient(var(--ww-photo-top, #f4eeea), var(--ww-photo-top, #f4eeea)) top / 100% 11px no-repeat;
+  box-sizing: border-box !important; display: block !important;
+  padding: 10.5% 0 0 !important; margin-bottom: 20px !important; /* % of the card width, so it scales on phones; the theme's 20px under the photo moves to a margin */
+  background-color: var(--ww-photo-top, #f4eeea) !important;
   object-fit: cover !important; object-position: 50% 100% !important;
 }
 
