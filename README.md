@@ -2,7 +2,7 @@
 
 A static rebuild of [wandandwhiskcafe.com](https://wandandwhiskcafe.com), the WordPress/Divi site James Alborough built, with the design changes Jesse Pruitt asked for. Every page, URL, menu item, blog post and line of copy from the live site is carried over; the look and layout are new.
 
-- **Preview:** https://odyssey-jotun.github.io/wand-whisk-cafe/ (noindex, so it does not compete with the live site in search)
+- **Preview:** https://odyssey-jotun.github.io/wand-whisk-cafe/ once this repo is public and GitHub Pages serves `docs/` (the build is noindex, so it will not compete with the live site in search)
 - **Live site today:** still the WordPress build on James's hosting
 
 ## What changed, and where it came from
