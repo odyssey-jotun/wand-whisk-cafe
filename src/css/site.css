@@ -113,13 +113,13 @@ h1 + *, h2 + *, h3 + * { margin-top: 0; }
   position: absolute;
   left: 0; right: 0;
   height: 22px;
-  background-size: 44px 22px;
+  background-size: 40px 22px;
   background-repeat: repeat-x;
   pointer-events: none;
   z-index: 2;
 }
-.scallop-bottom::after { bottom: -21px; background-image: radial-gradient(circle at 22px 0, var(--scallop, var(--pink)) 21px, transparent 22px); }
-.scallop-top::before { top: -21px; background-image: radial-gradient(circle at 22px 22px, var(--scallop, var(--plum)) 21px, transparent 22px); }
+.scallop-bottom::after { bottom: -21px; background-image: radial-gradient(circle at 20px 0, var(--scallop, var(--pink)) 21px, transparent 22px); }
+.scallop-top::before { top: -21px; background-image: radial-gradient(circle at 20px 22px, var(--scallop, var(--plum)) 21px, transparent 22px); }
 
 /* ---------- buttons (sticker style, flat with a hard offset shadow) ---------- */
 .btn {
@@ -236,8 +236,8 @@ h1 + *, h2 + *, h3 + * { margin-top: 0; }
 .page-title-grid { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
 .page-title-grid .cast { width: clamp(150px, 18vw, 230px); margin-bottom: -40px; }
 @media (max-width: 700px) {
-  .page-title-grid { grid-template-columns: 1fr; }
-  .page-title-grid .cast { width: 140px; margin: 6px 0 -30px auto; }
+  .page-title-grid { grid-template-columns: 1fr auto; align-items: center; gap: 12px; }
+  .page-title-grid .cast { width: 112px; margin: 0; }
 }
 
 /* wavy marquee title (menu page, after Little Goat) */
@@ -537,7 +537,8 @@ a.post-card:hover { color: var(--ink); transform: translate(-3px, -3px); box-sha
 /* the footer cast stands inside the last section's color, so give that section room */
 main > :last-child { padding-bottom: calc(var(--section-y) + clamp(64px, 11vw, 150px)); }
 .footer-cast {
-  position: absolute; left: 0; right: 0; bottom: calc(100% - 2px);
+  position: absolute; left: 0; right: 0; bottom: 100%;
+  clip-path: inset(-400px -400px 0 -400px); /* nothing shows below the footer's top edge */
   display: flex; justify-content: center; align-items: flex-end; gap: clamp(4px, 3vw, 40px);
   pointer-events: none; z-index: 1;
 }
