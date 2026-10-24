@@ -3,6 +3,21 @@
    the sign-up pop-up). James's own scripts keep running untouched. */
 (function () {
   document.documentElement.classList.add('ww-js');
+
+  // Taiyaki soft serve cards: paint the strip above each swirl in that photo's own backdrop color
+  document.querySelectorAll('.dp-dfg-item.menu-category-taiyaki-soft-serve img').forEach(function (img) {
+    function paint() {
+      try {
+        var c = document.createElement('canvas'); c.width = 8; c.height = 1;
+        var g = c.getContext('2d');
+        g.drawImage(img, 0, 0, img.naturalWidth, Math.max(2, Math.round(img.naturalHeight * 0.01)), 0, 0, 8, 1);
+        var d = g.getImageData(0, 0, 8, 1).data, r = 0, gr = 0, b = 0;
+        for (var i = 0; i < 32; i += 4) { r += d[i]; gr += d[i + 1]; b += d[i + 2]; }
+        img.style.setProperty('--ww-photo-top', 'rgb(' + Math.round(r / 8) + ',' + Math.round(gr / 8) + ',' + Math.round(b / 8) + ')');
+      } catch (e) {}
+    }
+    if (img.complete && img.naturalWidth) paint(); else img.addEventListener('load', paint);
+  });
   var cfg = window.WW || {};
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
