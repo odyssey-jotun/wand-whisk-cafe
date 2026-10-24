@@ -238,15 +238,47 @@ body.page-id-719 .et_pb_blog_0 .post-content, body.page-id-719 .et_pb_blog_0 .po
 @media (max-width: 767px) { body.page-id-719 .et_pb_blog_0 .et_pb_blog_posts { padding: 6px 20px; } body.page-id-719 .et_pb_blog_0 .entry-title, body.page-id-719 .et_pb_blog_0 .entry-title a { font-size: 21px !important; } }
 
 /* About: Jesse and Gwen, in the same double-ring circle frames as the home cards */
-.ww-founder { display: grid; grid-template-columns: 200px 1fr; gap: 36px; align-items: center; margin: 22px 0 34px; }
+.ww-founder { display: grid; grid-template-columns: 280px 1fr; gap: 44px; align-items: center; margin: 22px 0 34px; }
 .ww-founder-photo { margin: 0; }
 .ww-founder-photo img {
-  display: block; width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+  display: block; width: 280px; height: 280px; border-radius: 50%; object-fit: cover;
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.95), 0 0 0 11px rgba(255, 255, 255, 0.28), 0 16px 34px rgba(94, 39, 80, 0.3);
 }
 .ww-founder-text h3 { margin-top: 0 !important; padding-top: 0 !important; }
 @media (max-width: 767px) {
   .ww-founder { grid-template-columns: 1fr; justify-items: center; gap: 20px; }
-  .ww-founder-photo img { width: 170px; height: 170px; }
+  .ww-founder-photo img { width: 230px; height: 230px; }
   .ww-founder-text h3 { text-align: center; }
 }
+
+/* About hero, in the home hero's style */
+.ww-about-hero {
+  position: relative; z-index: 2;
+  padding: 150px 24px 70px; text-align: center; overflow: hidden;
+  background: radial-gradient(circle, rgb(167, 76, 156) 0%, rgb(246, 184, 198) 100%);
+  border-radius: 0 0 56px 56px;
+  box-shadow: 0 18px 40px rgba(94, 39, 80, 0.22);
+}
+.ww-about-hero h1.entry-title { color: #fff !important; font-size: 60px !important; line-height: 1.1 !important; margin: 0 !important; padding: 0 !important; }
+.ww-about-hero .ww-hero-sub { max-width: 760px; color: #fff !important; font-size: 34px !important; line-height: 1.25 !important; font-weight: 500 !important; margin: 22px auto 0 !important; padding: 0 !important; }
+.ww-guild { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 28px; max-width: 1100px; margin: 40px auto 0; min-height: 300px; }
+.ww-guild-girl { width: auto; height: 250px; animation: float 4s ease-in-out infinite; }
+.ww-guild-girl.g2 { height: 300px; animation-delay: -1.3s; }
+.ww-guild-girl.g3 { animation-delay: -2.6s; }
+.ww-star { position: absolute; width: 27px; height: 27px; animation: randomTwinkle 7s ease-in-out infinite both; }
+.ww-star.s1 { left: 6%; top: 18%; animation-duration: 6s; }
+.ww-star.s2 { left: 12%; top: 62%; animation-duration: 9s; }
+.ww-star.s3 { right: 8%; top: 12%; animation-duration: 5s; }
+.ww-star.s4 { right: 14%; top: 58%; animation-duration: 11s; }
+.ww-star.s5 { left: 49%; top: -6%; animation-duration: 8s; width: 20px; height: 20px; }
+/* the text section under the hero tucks under its rounded bottom */
+body.page-id-14 .ww-about-hero + .et_pb_section_0, .ww-about-hero + .et_pb_section_0 { margin-top: -56px; padding-top: calc(4% + 56px) !important; }
+@media (max-width: 767px) {
+  .ww-about-hero { padding: 120px 16px 44px; border-radius: 0 0 40px 40px; }
+  .ww-about-hero h1.entry-title { font-size: 44px !important; }
+  .ww-about-hero .ww-hero-sub { font-size: 24px !important; }
+  .ww-guild { gap: 0; min-height: 0; margin-top: 26px; }
+  .ww-guild-girl { height: 90px; }
+  .ww-guild-girl.g2 { height: 114px; }
+}
+@media (prefers-reduced-motion: reduce) { .ww-guild-girl, .ww-star { animation: none !important; } .ww-star { opacity: .8; } }

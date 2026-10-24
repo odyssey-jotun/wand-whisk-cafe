@@ -125,16 +125,21 @@ function markLastSection(html) {
   return html.replace('id="main-content"', 'id="main-content" class="ww-last-plain"');
 }
 
-function aboutTitleFirst(html) {
+// About page hero, in the home hero's style: title, a line from the About copy, and three of the
+// guild girls floating with James's own float and twinkle animations. Replaces the old title module.
+function aboutHero(html) {
   const t = html.indexOf('<div class="et_pb_post_title_0');
-  if (t < 0) return html;
-  const tEnd = elementEnd(html, t);
-  const title = html.slice(t, tEnd);
-  const col = html.lastIndexOf('<div class="et_pb_column_', t);
-  const colOpenEnd = html.indexOf('>', col) + 1;
-  if (col < 0 || colOpenEnd > t) return html;
-  html = html.slice(0, t) + html.slice(tEnd);
-  return html.slice(0, colOpenEnd) + title + html.slice(colOpenEnd);
+  if (t >= 0) html = html.slice(0, t) + html.slice(elementEnd(html, t));
+  const sec = html.indexOf('<div class="et_pb_section_0 et_pb_section');
+  if (sec < 0) return html;
+  const g = (n, w, h, cls) => `<img class="ww-guild-girl ${cls}" src="${PROD}/ww/img/guild/${n}-400.webp" srcset="${PROD}/ww/img/guild/${n}-400.webp 400w, ${PROD}/ww/img/guild/${n}-800.webp 800w" sizes="(max-width: 767px) 120px, 300px" width="${w}" height="${h}" alt="">`;
+  const star = (cls) => `<img class="ww-star ${cls}" src="${PROD}/wp-content/uploads/2026/06/WWStarWhite.svg" alt="" width="27" height="27">`;
+  const hero = `<div class="ww-about-hero"><div class="ww-about-hero-inner">
+<h1 class="entry-title">About Us</h1>
+<p class="ww-hero-sub">There is always room for one more adventurer at the guild.</p>
+<div class="ww-guild" aria-hidden="true">${star('s1')}${star('s2')}${star('s3')}${star('s4')}${star('s5')}${g('matcha', 400, 320, 'g1')}${g('strawberry', 400, 367, 'g2')}${g('ube', 400, 320, 'g3')}</div>
+</div></div>`;
+  return html.slice(0, sec) + hero + html.slice(sec);
 }
 
 // About page: put Jesse's and Gwen's photos (from the Park West Pharmacy team page) beside their bios.
@@ -174,7 +179,7 @@ function processHtml(html, rel) {
   html = addMenuItems(html);
   if (rel === 'menu/index.html') html = waveTitle(html);
   if (rel === 'contact-us/index.html') html = contactForm(html);
-  if (rel === 'about-us/index.html') html = founderPhotos(aboutTitleFirst(html));
+  if (rel === 'about-us/index.html') html = founderPhotos(aboutHero(html));
   if (PREVIEW) html = html.replace(/<meta name="robots"[^>]*>/i, '<meta name="robots" content="noindex, nofollow">');
   const { out, restore } = protect(html);
   html = restore(rewriteUrls(out, prefix));
