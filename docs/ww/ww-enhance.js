@@ -43,7 +43,7 @@
   });
 
   /* ---- Eorzea Café style ornament line under centered section titles ---- */
-  var orn = [].slice.call(document.querySelectorAll('h2.et_pb_module_header, h1.entry-title, h1.et_pb_module_header')).filter(function (h) {
+  var orn = [].slice.call(document.querySelectorAll('h2.et_pb_module_header, h1.entry-title, h1.et_pb_module_header, .ww-about-closer h2')).filter(function (h) {
     if (h.closest('.et_pb_blurb, .anchor-group, .dp-dfg-item, .ww-wave-title')) return false;
     if (document.body.classList.contains('home') && h.tagName === 'H1') return false;
     return getComputedStyle(h).textAlign === 'center';
