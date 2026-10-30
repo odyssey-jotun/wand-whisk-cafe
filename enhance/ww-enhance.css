@@ -36,7 +36,9 @@
 .ww-hidden-item { display: none !important; }
 
 /* ---------- Pokémon Café style fade-up as cards enter ---------- */
-.ww-js .ww-rise { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
+.ww-js .ww-rise { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22, .61, .36, 1), transform .7s cubic-bezier(.22, .61, .36, 1); transition-delay: var(--ww-delay, 0s); }
+/* the menu cards' hover-bounce transition is !important, so the fade needs it too or the photos snap in */
+.ww-js .dp-dfg-item.ww-rise { transition: opacity .7s cubic-bezier(.22, .61, .36, 1), transform .7s cubic-bezier(.22, .61, .36, 1), box-shadow .25s ease !important; transition-delay: var(--ww-delay, 0s) !important; }
 .ww-js .ww-rise.ww-in { opacity: 1; transform: none; }
 
 /* ---------- Kirby Café style bounce on hover ---------- */

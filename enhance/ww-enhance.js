@@ -20,6 +20,12 @@
   });
   var cfg = window.WW || {};
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Fade a card in, then drop the rise classes so its hover bounce comes back.
+  function riseIn(el) {
+    el.classList.add('ww-in');
+    var done = function () { el.classList.remove('ww-rise', 'ww-in'); el.style.removeProperty('--ww-delay'); };
+    el.addEventListener('transitionend', function end(e) { if (e.target === el && e.propertyName === 'opacity') { el.removeEventListener('transitionend', end); done(); } });
+  }
 
   /* ---- Load More: reveal the items the static build added ---- */
   // Capture phase so the FilterGrid plugin's AJAX handler never runs.
@@ -32,7 +38,7 @@
     var hidden = grid ? grid.querySelectorAll('.ww-hidden-item') : [];
     for (var i = 0; i < hidden.length; i++) {
       hidden[i].classList.remove('ww-hidden-item');
-      if (!reduce) { hidden[i].classList.add('ww-rise'); (function (el) { requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('ww-in'); }); }); })(hidden[i]); }
+      if (!reduce) { hidden[i].classList.add('ww-rise'); (function (el) { el.style.setProperty('--ww-delay', (i % 4) * 0.08 + 's'); requestAnimationFrame(function () { requestAnimationFrame(function () { riseIn(el); }); }); })(hidden[i]); }
     }
     var wrap = btn.closest('.dp-dfg-pagination');
     if (wrap) wrap.style.display = 'none';
@@ -67,10 +73,10 @@
       if (r.top < window.innerHeight) return; // already on screen: leave it alone
       el.classList.add('ww-rise');
       var sibs = el.parentNode ? [].slice.call(el.parentNode.children) : [];
-      el.style.transitionDelay = (Math.max(0, sibs.indexOf(el)) % 4) * 0.08 + 's';
+      el.style.setProperty('--ww-delay', (Math.max(0, sibs.indexOf(el)) % 4) * 0.08 + 's');
     });
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('ww-in'); io.unobserve(en.target); } });
+      entries.forEach(function (en) { if (en.isIntersecting) { riseIn(en.target); io.unobserve(en.target); } });
     }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
     document.querySelectorAll('.ww-rise').forEach(function (el) { io.observe(el); });
     if (cast) io.observe(cast);
